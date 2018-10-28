@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2043
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TR-Central-Bank-Currency-Rates", "TR-Central-Bank-Currency-Rates\TR-Central-Bank-Currency-Rates.csproj", "{6857D3C1-1B7D-4A84-97DB-A94FE0040A18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TR-Central-Bank-Currency-Rates", "TR-Central-Bank-Currency-Rates\TR-Central-Bank-Currency-Rates.csproj", "{BD54F44A-F5E7-407D-9A45-D74A25DC5414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6857D3C1-1B7D-4A84-97DB-A94FE0040A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6857D3C1-1B7D-4A84-97DB-A94FE0040A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6857D3C1-1B7D-4A84-97DB-A94FE0040A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6857D3C1-1B7D-4A84-97DB-A94FE0040A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD54F44A-F5E7-407D-9A45-D74A25DC5414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD54F44A-F5E7-407D-9A45-D74A25DC5414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD54F44A-F5E7-407D-9A45-D74A25DC5414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD54F44A-F5E7-407D-9A45-D74A25DC5414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AFA887BC-6AE5-4135-A08E-1AA42AB1D894}
+		SolutionGuid = {267E2D24-71B8-4891-95AB-5904DA561BDF}
 	EndGlobalSection
 EndGlobal
