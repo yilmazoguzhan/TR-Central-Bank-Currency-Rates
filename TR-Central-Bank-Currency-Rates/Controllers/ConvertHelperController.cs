@@ -8,6 +8,11 @@ using System.Xml;
 
 namespace TR_Central_Bank_Currency_Rates.Controllers
 {
+    public class GetXmlParams
+    {
+        public string ShortDate { get; set; }
+    }
+
     public class ConvertHelperController : ApiController
     {
         //public class 
@@ -18,15 +23,41 @@ namespace TR_Central_Bank_Currency_Rates.Controllers
         {
             try
             {
-                string todayXmlUrl = "http://www.tcmb.gov.tr/kurlar/today.xml";
+                string xmlUrl = "http://www.tcmb.gov.tr/kurlar/today.xml";
                 var xmlDoc = new XmlDocument();
-                xmlDoc.Load(todayXmlUrl);
+                xmlDoc.Load(xmlUrl);
                 return Json(new { state = true, content = xmlDoc.InnerXml });
             }
             catch (Exception ex)
             {
                 logController.WriteLog(ex.Message);
                 return Json(new { state = false, content = "Merkez Bankası xml bilgisi alınırken hata meydana geldi!" });
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult GetXml([FromBody] GetXmlParams getXmlParams)
+        {
+            if(string.IsNullOrEmpty(getXmlParams.ShortDate) || getXmlParams.ShortDate == "" || getXmlParams.ShortDate.Length != 8)
+            {
+                return Json(new { state = false, content = "Tarih sekiz karakter ve ddMMyyyy formatında olmalıdır." });
+            }
+            else
+            {
+                string urlPart = getXmlParams.ShortDate.Substring(4, 4) + getXmlParams.ShortDate.Substring(2, 2);
+
+                try
+                {
+                    string xmlUrl = "http://www.tcmb.gov.tr/bilgiamackur/"+ urlPart + "/" + getXmlParams.ShortDate + ".xml";
+                    var xmlDoc = new XmlDocument();
+                    xmlDoc.Load(xmlUrl);
+                    return Json(new { state = true, content = xmlDoc.InnerXml });
+                }
+                catch (Exception ex)
+                {
+                    logController.WriteLog(ex.Message);
+                    return Json(new { state = false, content = "Merkez Bankası ilgili tarihin xml bilgisi alınırken hata meydana geldi!" });
+                }
             }
         }
     }
