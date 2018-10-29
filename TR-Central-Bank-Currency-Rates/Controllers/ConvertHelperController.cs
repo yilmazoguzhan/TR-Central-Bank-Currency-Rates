@@ -13,6 +13,11 @@ namespace TR_Central_Bank_Currency_Rates.Controllers
         public string ShortDate { get; set; }
     }
 
+    public class CurrencyCOnvertParams
+    {
+        public string ShortDate { get; set; }
+    }
+
     public class ConvertHelperController : ApiController
     {
         //public class 
@@ -60,5 +65,11 @@ namespace TR_Central_Bank_Currency_Rates.Controllers
                 }
             }
         }
+
+        /*[HttpPost]
+        public IHttpActionResult CurrecyConvert([FromBody ])
+        {
+
+        }*/
     }
 }
