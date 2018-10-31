@@ -17,7 +17,7 @@ namespace TR_Central_Bank_Currency_Rates.Controllers
 
         public void WriteLog(string message)
         {
-            var path = HttpRuntime.AppDomainAppPath + @"\Log\";
+            var path = HttpRuntime.AppDomainAppPath + @"\Logs\";
             var filename = DateTime.Now.ToString("ddMMyyyyHHmmss") + ".log";
             try
             {

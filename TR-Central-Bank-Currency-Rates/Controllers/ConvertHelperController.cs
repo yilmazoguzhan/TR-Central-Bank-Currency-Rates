@@ -13,9 +13,9 @@ namespace TR_Central_Bank_Currency_Rates.Controllers
         public string ShortDate { get; set; }
     }
 
-    public class CurrencyCOnvertParams
+    public class CurrencyConvertParams
     {
-        public string ShortDate { get; set; }
+        public string Currency { get; set; }
     }
 
     public class ConvertHelperController : ApiController
@@ -66,10 +66,37 @@ namespace TR_Central_Bank_Currency_Rates.Controllers
             }
         }
 
-        /*[HttpPost]
-        public IHttpActionResult CurrecyConvert([FromBody ])
+        [HttpPost]
+        public IHttpActionResult CurrencyConvert([FromBody] CurrencyConvertParams currencyConvertParams)
         {
-
-        }*/
+            string[] CurrencyTypes = { "USD", "AUD", "DKK", "EUR", "GBP", "CHF", "SEK", "CAD", "KWD", "NOK", "SAR", "JPY", "BGN", "RON", "RUB", "IRR", "CNY", "PKR", "QAR", "XDR" };
+            
+            if(CurrencyTypes.Contains(currencyConvertParams.Currency))
+            {
+                try
+                {
+                    string xmlUrl = "http://www.tcmb.gov.tr/kurlar/today.xml";
+                    var xmlDoc = new XmlDocument();
+                    xmlDoc.Load(xmlUrl);
+                    XmlNodeList currencyInfo = xmlDoc.SelectNodes("//Currency[@CurrencyCode='" + currencyConvertParams.Currency + "']");
+                    return Json(new { state = true, content = currencyInfo });
+                }
+                catch (Exception ex)
+                {
+                    logController.WriteLog(ex.Message);
+                    return Json(new { state = false, content = "Merkez Bankası xml bilgisi alınırken hata meydana geldi!" });
+                }
+            }
+            else
+            {
+                string currencyTotal = string.Empty;
+                foreach (string currency in CurrencyTypes)
+                {
+                    currencyTotal = currencyTotal + " - " + currency;
+                }
+                currencyTotal = currencyTotal.Substring(3, currencyTotal.Length - 3);
+                return Json(new { state = false, content = "Geçerli bir döviz türü girmeniz gerekmektedir. Döviz türleri '" + currencyTotal + "'" });
+            }
+        }
     }
 }
